@@ -1,2 +1,8 @@
-# awesome-tips-flutter-app
-知识小集 Flutter 版本客户端
+# awesome_tips_flutter
+
+A new Flutter project.
+
+## Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
