@@ -55,11 +55,10 @@ class _ContentListState extends State<ContentList> {
   }
 
   void _loadData() async {
-    String dataURL =
-        "https://app.kangzubin.com/iostips/api/feed/list?page=1&from=flutter-app&version=1.0";
+    String dataURL = "https://tips.kangzubin.com/api/feed/list?page=1";
     http.Response response = await http.get(dataURL);
 
-    final body = JSON.decode(response.body);
+    final body = json.decode(response.body);
     final int code = body["code"];
     if (code == 0) {
       final feeds = body["data"]["feeds"];
@@ -67,7 +66,7 @@ class _ContentListState extends State<ContentList> {
       print(feeds);
       var items = [];
       feeds.forEach((item) =>
-          items.add(Feed(item["auther"], item["title"], item["postdate"])));
+          items.add(Feed(item["author"], item["title"], item["postdate"])));
 
       setState(() {
         _items = items;
