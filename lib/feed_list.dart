@@ -43,7 +43,7 @@ class _FeedListState extends State<FeedList> {
   void initState() {
     super.initState();
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels + 10.0 == _scrollController.position.maxScrollExtent) {
+      if (_scrollController.position.pixels + 10.0 >= _scrollController.position.maxScrollExtent) {
         _onFetchMore();
       }
     });
@@ -87,6 +87,7 @@ class _FeedListState extends State<FeedList> {
   } 
 
   void _loadData() async {
+    _loading = true;
     String dataURL = "https://tips.kangzubin.com/api/feed/list?page=$_page";
     http.Response response = await http.get(dataURL, headers: {'from': 'flutter-app', 'version': '1.0'});
 
@@ -98,11 +99,14 @@ class _FeedListState extends State<FeedList> {
         items.addAll(_items);
       }
       final feeds = body["data"]["feeds"];
-      feeds.forEach((item) => items.add(Feed.fromJson(item)));
+      if (feeds.length > 0) {
+        feeds.forEach((item) => items.add(Feed.fromJson(item)));
+      }
 
       setState(() {
         _items = items;
       });
     }
+    _loading = false;
   }
 }
