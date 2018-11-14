@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'feed.dart';
-import 'feed_detail.dart';
 
 class FeedList extends StatefulWidget {
   @override
@@ -65,9 +65,8 @@ class _FeedListState extends State<FeedList> {
       ),
       onTap: () {
         if (feed.url != null) {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => FeedDetail(feedUrl: feed.url)
-          ));
+          // 通过 Safari VC 打开链接
+          launch(feed.url, forceSafariVC: true);
         }
       },
     );

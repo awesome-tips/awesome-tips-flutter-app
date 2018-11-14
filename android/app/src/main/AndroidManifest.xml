@@ -14,7 +14,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="awesome_tips_flutter"
+        android:label="知识小集"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

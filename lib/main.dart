@@ -12,6 +12,7 @@ class AwesomeTipsApp extends StatelessWidget {
         appBar: AppBar(title: Text(Consts.appTitle)),
         body: FeedList(),
       ),
+      theme: ThemeData(primaryColor: Colors.white),
     );
   }
 }
